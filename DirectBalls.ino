@@ -11,17 +11,24 @@ void loop() {
   //flash lights
 
   //display final light pattern
-  int lightKey = random(3);
+  int lightKey = random(2);
   switch (lightKey)
   {
     case 1:
-    Serial.println("final light pattern: ");
+    Serial.println("displaying final light pattern: ");
     break;
   }
   
   
+  
 
   //read direction
+  {
+  case 2:
+  Serial.println("reading direction given by child to kinect: ");
+  break;
+    
+  }
 
   //set gates
 
