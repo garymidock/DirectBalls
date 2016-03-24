@@ -17,13 +17,13 @@ int ballIsInPosition     = 0;            // when true, display final light patte
 long lastRedLedChangeTime   = 0;     // the last time the output pin was toggled
 long lastGreenLedChangeTime = 0;     // the last time the output pin was toggled
 long lastBlueLedChangeTime  = 0;     // the last time the output pin was toggled
-long redLightChangeDelay    = 50;    // the debounce time; increase if the output flickers
+long redLightChangeDelay    = 150;    // the debounce time; increase if the output flickers
 long greenLightChangeDelay  = 50;    // the debounce time; increase if the output flickers
-long blueLightChangeDelay   = 50;    // the debounce time; increase if the output flickers
+long blueLightChangeDelay   = 250;    // the debounce time; increase if the output flickers
 
 //testing variables
 int counter = 0;
-long timeForStateChange = 5000;     //stay in a particular state for this time only
+long timeForStateChange = 15000;     //stay in a particular state for this time only
 
 void setup() {
   // put your setup code here, to run once:
@@ -96,8 +96,12 @@ void loop() {
 
     //display final light pattern
     case 3:
-      digitalWrite(redLightPin, HIGH);
-      redLedState = HIGH;
+      digitalWrite(redLightPin, LOW);
+      redLedState = LOW;
+      digitalWrite(greenLightPin, LOW);
+      greenLedState = LOW;
+      digitalWrite(blueLightPin, HIGH);
+      blueLedState = HIGH;
 
       //set gates
 
