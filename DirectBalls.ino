@@ -1,8 +1,10 @@
 // constants won't change. They're used here to
 // set pin numbers:
-const int redLightPin   = 5; //arduino digital pin 11 controls red light
-const int greenLightPin = 6; //arduino digital pin 12 controls green light
-const int blueLightPin  = 7; //arduino digital pin 13 controls blue light
+const int redLightPin    = 5; //arduino digital pin 5 controls red light
+const int greenLightPin  = 6; //arduino digital pin 6 controls green light
+const int blueLightPin   = 7; //arduino digital pin 7 controls blue light
+
+const int stateSwitchPin = 4; //pin 4 has PB that increments stateNum
 
 // Variables will change:
 int redLedState          = HIGH;         // the current state of the red light output pin
@@ -11,7 +13,7 @@ int blueLedState         = HIGH;         // the current state of the blue light 
 int stateNum             = 1;            // contains the number of the state being executed
 int lastButtonState      = LOW;          // the previous reading from the input pin
 int ballIsInPosition     = 0;            // when true, display final light pattern
-
+int switchState          = 0;            // 1 = switch state
 // the following variables are long's because the time, measured in miliseconds,
 // will quickly become a bigger number than can be stored in an int.
 long lastRedLedChangeTime   = 0;     // the last time the output pin was toggled
@@ -41,6 +43,8 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+
+  switchState = digitalRead(stateSwitchPin);
 
   switch (stateNum)
   {
@@ -81,10 +85,14 @@ void loop() {
       //        Serial.println("setting ballIsInPostion to 1");
       //        ballIsInPosition = 1;
       //      }
-      if (millis() > timeForStateChange)
+//      if (millis() > timeForStateChange)
+//      {
+//        stateNum = 3;
+//
+//      }
+      if (switchState == 1)
       {
-        stateNum = 3;
-
+        stateNum += 1;
       }
       if (ballIsInPosition == 1)
       {
