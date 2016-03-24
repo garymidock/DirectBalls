@@ -1,8 +1,8 @@
 // constants won't change. They're used here to
 // set pin numbers:
-const int redLightPin   = 13; //arduino digital pin 11 controls red light
-const int greenLightPin = 12; //arduino digital pin 12 controls green light
-const int blueLightPin  = 11; //arduino digital pin 13 controls blue light
+const int redLightPin   = 5; //arduino digital pin 11 controls red light
+const int greenLightPin = 6; //arduino digital pin 12 controls green light
+const int blueLightPin  = 7; //arduino digital pin 13 controls blue light
 
 // Variables will change:
 int redLedState          = HIGH;         // the current state of the red light output pin
